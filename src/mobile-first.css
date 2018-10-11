@@ -186,7 +186,7 @@ main{
   color: white;
 }
 
-.projects aside{
+/*.projects aside{
   margin: 0 5%;
   padding: 20px 0;
   float: right;
@@ -196,7 +196,7 @@ main{
   border-radius: 20px;
   background: radial-gradient(ellipse at center, rgba(76,76,76,1) 0%, rgba(76,76,76,0.98) 16%, rgba(19,19,19,0.9) 100%);
   box-shadow: 3px 3px 2px rgba(36, 36, 36, 0.8);
-}
+}*/
 
 .projects a{
   color: #0abb92;
@@ -211,6 +211,61 @@ main{
   font-size: 40px;
 }
 
+.projects{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100px 400px;
+  grid-gap: 5%;
+  margin: 0 1%;
+}
+
+.projects h1{
+  grid-column: 1 / span 2;
+  text-align: center;
+}
+
+.p1, .p2{
+  grid-column-start: 1;
+  grid-row-start: 2;
+  background: url('/images/p1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: 3px inset #ccc;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: ease 200ms;
+}
+
+.p2{
+  background: url('/images/p2.png');
+}
+
+.scroll, .scrollp2{
+  position: absolute;
+  bottom: -100%;
+  background: rgba(0,0,0,.8);
+  transition: all ease 1s;
+  text-align: center;
+  padding: 1%;
+}
+
+.p1:hover, .p2:hover{
+  border-color: #0abb92;
+  border-width: 5px;
+}
+
+.p1:hover > .scroll, .p2:hover > .scrollp2{
+  bottom: 0;
+}
+
+.p2{
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
 .contact a{
   color: #0abb92;
 }
@@ -221,6 +276,17 @@ main{
   }
   100%{
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .projects{
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 400px 400px;
+  }
+  .p2{
+    grid-row-start: 3;
+    grid-column: 1;
   }
 }
 
